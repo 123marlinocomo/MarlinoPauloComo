@@ -1,50 +1,51 @@
-<form id="contactForm">
+function validarFormulario() {
 
-    <div class="row">
+    let nome = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let assunto = document.getElementById("subject").value.trim();
+    let mensagem = document.getElementById("message").value.trim();
 
-        <div class="col-lg-4">
-            <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Name">
-                <span id="erroNome" class="erro"></span>
-            </div>
-        </div>
+    let erroNome = document.getElementById("erroNome");
+    let erroEmail = document.getElementById("erroEmail");
+    let erroAssunto = document.getElementById("erroAssunto");
+    let erroMensagem = document.getElementById("erroMensagem");
+    let mensagemSucesso = document.getElementById("mensagemSucesso");
 
-        <div class="col-lg-4">
-            <div class="form-group">
-                <input type="text" class="form-control" id="email" placeholder="E-mail">
-                <span id="erroEmail" class="erro"></span>
-            </div>
-        </div>
+    erroNome.textContent = "";
+    erroEmail.textContent = "";
+    erroAssunto.textContent = "";
+    erroMensagem.textContent = "";
+    mensagemSucesso.textContent = "";
 
-        <div class="col-lg-4">
-            <div class="form-group">
-                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                <span id="erroAssunto" class="erro"></span>
-            </div>
-        </div>
+    let valido = true;
 
-        <div class="col-12">
-            <div class="form-group">
-                <textarea
-                    name="message"
-                    class="form-control"
-                    id="message"
-                    cols="30"
-                    rows="10"
-                    placeholder="Message"></textarea>
+    if (nome === "") {
+        erroNome.textContent = "O nome é obrigatório.";
+        valido = false;
+    }
 
-                <span id="erroMensagem" class="erro"></span>
-            </div>
-        </div>
+    if (email === "") {
+        erroEmail.textContent = "O e-mail é obrigatório.";
+        valido = false;
+    } else if (!email.includes("@")) {
+        erroEmail.textContent = "Digite um e-mail válido.";
+        valido = false;
+    }
 
-        <div class="col-12">
-            <div id="mensagemSucesso"></div>
+    if (assunto === "") {
+        erroAssunto.textContent = "O assunto é obrigatório.";
+        valido = false;
+    }
 
-            <button type="submit" class="btn btn-primary">
-                Submeter
-            </button>
-        </div>
+    if (mensagem === "") {
+        erroMensagem.textContent = "A mensagem é obrigatória.";
+        valido = false;
+    }
 
-    </div>
+    if (valido) {
+        mensagemSucesso.textContent = "Mensagem enviada com sucesso!";
+        document.getElementById("contactForm").reset();
+    }
 
-</form>
+    return false;
+}
