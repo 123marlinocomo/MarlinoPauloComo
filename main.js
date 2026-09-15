@@ -1,14 +1,56 @@
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+<div class="row">
+    <div class="col-12">
 
-    const email = document.getElementById("email").value.trim();
+        <div class="contact-form-area">
+            <form id="contactForm" action="#" method="post">
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                <div class="row">
 
-    if (!emailRegex.test(email)) {
-        alert("Por favor, introduza um e-mail válido.");
-        return;
-    }
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Name">
+                            <span id="erroNome" class="erro"></span>
+                        </div>
+                    </div>
 
-    alert("Formulário enviado com sucesso!");
-});
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" placeholder="E-mail">
+                            <span id="erroEmail" class="erro"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                            <span id="erroAssunto" class="erro"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <textarea 
+                                name="message" 
+                                class="form-control" 
+                                id="message" 
+                                cols="30" 
+                                rows="10" 
+                                placeholder="Message">
+                            </textarea>
+                            <span id="erroMensagem" class="erro"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            Enviar
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
