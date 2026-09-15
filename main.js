@@ -15,22 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnEnviar = document.getElementById("btnEnviar");
     const btnApagar = document.getElementById("btnApagar");
 
-
-    // Mensagens visíveis desde o início
-    erroNome.textContent = "O nome é obrigatório.";
-    erroEmail.textContent = "O e-mail é obrigatório.";
-    erroAssunto.textContent = "O assunto é obrigatório.";
-    erroMensagem.textContent = "A mensagem é obrigatória.";
-
-
-    // Botão Submeter
     btnEnviar.addEventListener("click", function () {
 
         let valido = true;
 
         mensagemSucesso.textContent = "";
 
-        // Nome
         if (nome.value.trim() === "") {
             erroNome.textContent = "O nome é obrigatório.";
             valido = false;
@@ -38,8 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
             erroNome.textContent = "";
         }
 
-
-        // E-mail
         if (email.value.trim() === "") {
             erroEmail.textContent = "O e-mail é obrigatório.";
             valido = false;
@@ -50,8 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
             erroEmail.textContent = "";
         }
 
-
-        // Assunto
         if (assunto.value.trim() === "") {
             erroAssunto.textContent = "O assunto é obrigatório.";
             valido = false;
@@ -59,8 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
             erroAssunto.textContent = "";
         }
 
-
-        // Mensagem
         if (mensagem.value.trim() === "") {
             erroMensagem.textContent = "A mensagem é obrigatória.";
             valido = false;
@@ -68,19 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
             erroMensagem.textContent = "";
         }
 
-
-        // Se tudo estiver preenchido
         if (valido) {
-
-            mensagemSucesso.textContent =
-                "Mensagem enviada com sucesso!";
-
+            mensagemSucesso.textContent = "Mensagem enviada com sucesso!";
         }
-
     });
 
-
-    // Botão Apagar
     btnApagar.addEventListener("click", function () {
 
         nome.value = "";
@@ -88,13 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
         assunto.value = "";
         mensagem.value = "";
 
+        erroNome.textContent = "";
+        erroEmail.textContent = "";
+        erroAssunto.textContent = "";
+        erroMensagem.textContent = "";
+
         mensagemSucesso.textContent = "";
-
-        erroNome.textContent = "O nome é obrigatório.";
-        erroEmail.textContent = "O e-mail é obrigatório.";
-        erroAssunto.textContent = "O assunto é obrigatório.";
-        erroMensagem.textContent = "A mensagem é obrigatória.";
-
     });
 
 });
