@@ -1616,6 +1616,21 @@ img {
     padding: 20px 15px 5px;
     margin-bottom: 0; }
 
+.erro {
+    display: block;
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#mensagemSucesso {
+    color: green;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+}
+
 /* :: 20.3.0 Tabs Area CSS */
 .oneMusic-tabs-content {
   position: relative;
