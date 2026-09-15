@@ -1,49 +1,100 @@
-document.getElementById("btnEnviar").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    let nome = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let assunto = document.getElementById("subject").value.trim();
-    let mensagem = document.getElementById("message").value.trim();
+    const nome = document.getElementById("name");
+    const email = document.getElementById("email");
+    const assunto = document.getElementById("subject");
+    const mensagem = document.getElementById("message");
 
-    let erroNome = document.getElementById("erroNome");
-    let erroEmail = document.getElementById("erroEmail");
-    let erroAssunto = document.getElementById("erroAssunto");
-    let erroMensagem = document.getElementById("erroMensagem");
-    let mensagemSucesso = document.getElementById("mensagemSucesso");
+    const erroNome = document.getElementById("erroNome");
+    const erroEmail = document.getElementById("erroEmail");
+    const erroAssunto = document.getElementById("erroAssunto");
+    const erroMensagem = document.getElementById("erroMensagem");
 
-    erroNome.textContent = "";
-    erroEmail.textContent = "";
-    erroAssunto.textContent = "";
-    erroMensagem.textContent = "";
-    mensagemSucesso.textContent = "";
+    const mensagemSucesso = document.getElementById("mensagemSucesso");
 
-    let valido = true;
+    const btnEnviar = document.getElementById("btnEnviar");
+    const btnApagar = document.getElementById("btnApagar");
 
-    if (nome === "") {
+
+    // Mensagens visíveis desde o início
+    erroNome.textContent = "O nome é obrigatório.";
+    erroEmail.textContent = "O e-mail é obrigatório.";
+    erroAssunto.textContent = "O assunto é obrigatório.";
+    erroMensagem.textContent = "A mensagem é obrigatória.";
+
+
+    // Botão Submeter
+    btnEnviar.addEventListener("click", function () {
+
+        let valido = true;
+
+        mensagemSucesso.textContent = "";
+
+        // Nome
+        if (nome.value.trim() === "") {
+            erroNome.textContent = "O nome é obrigatório.";
+            valido = false;
+        } else {
+            erroNome.textContent = "";
+        }
+
+
+        // E-mail
+        if (email.value.trim() === "") {
+            erroEmail.textContent = "O e-mail é obrigatório.";
+            valido = false;
+        } else if (!email.value.includes("@")) {
+            erroEmail.textContent = "Digite um e-mail válido.";
+            valido = false;
+        } else {
+            erroEmail.textContent = "";
+        }
+
+
+        // Assunto
+        if (assunto.value.trim() === "") {
+            erroAssunto.textContent = "O assunto é obrigatório.";
+            valido = false;
+        } else {
+            erroAssunto.textContent = "";
+        }
+
+
+        // Mensagem
+        if (mensagem.value.trim() === "") {
+            erroMensagem.textContent = "A mensagem é obrigatória.";
+            valido = false;
+        } else {
+            erroMensagem.textContent = "";
+        }
+
+
+        // Se tudo estiver preenchido
+        if (valido) {
+
+            mensagemSucesso.textContent =
+                "Mensagem enviada com sucesso!";
+
+        }
+
+    });
+
+
+    // Botão Apagar
+    btnApagar.addEventListener("click", function () {
+
+        nome.value = "";
+        email.value = "";
+        assunto.value = "";
+        mensagem.value = "";
+
+        mensagemSucesso.textContent = "";
+
         erroNome.textContent = "O nome é obrigatório.";
-        valido = false;
-    }
-
-    if (email === "") {
         erroEmail.textContent = "O e-mail é obrigatório.";
-        valido = false;
-    } else if (!email.includes("@")) {
-        erroEmail.textContent = "Digite um e-mail válido.";
-        valido = false;
-    }
-
-    if (assunto === "") {
         erroAssunto.textContent = "O assunto é obrigatório.";
-        valido = false;
-    }
-
-    if (mensagem === "") {
         erroMensagem.textContent = "A mensagem é obrigatória.";
-        valido = false;
-    }
 
-    if (valido) {
-        mensagemSucesso.textContent = "Mensagem enviada com sucesso!";
-        document.getElementById("contactForm").reset();
-    }
+    });
+
 });
