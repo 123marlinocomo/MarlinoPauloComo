@@ -1,4 +1,4 @@
-function validarFormulario() {
+document.getElementById("btnEnviar").addEventListener("click", function () {
 
     let nome = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
@@ -46,7 +46,4 @@ function validarFormulario() {
         mensagemSucesso.textContent = "Mensagem enviada com sucesso!";
         document.getElementById("contactForm").reset();
     }
-
-    return false;
-}
- 
+});
