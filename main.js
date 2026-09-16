@@ -86,3 +86,81 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const formLogin = document.getElementById("contactForm");
+
+    if (!formLogin) {
+        return;
+    }
+
+    const email = document.getElementById("email");
+    const password = document.getElementById("exampleInputPassword1");
+
+    const erroEmail = document.getElementById("erroEmail");
+    const erroPassword = document.getElementById("erroPassword");
+
+    const btnApagar = document.getElementById("btnApagarLogin");
+    const mensagemLogin = document.getElementById("mensagemLogin");
+
+    formLogin.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        let valido = true;
+
+        erroEmail.textContent = "";
+        erroPassword.textContent = "";
+        mensagemLogin.textContent = "";
+
+        erroEmail.classList.remove("mostrar");
+        erroPassword.classList.remove("mostrar");
+
+        if (email.value.trim() === "") {
+
+            erroEmail.textContent = "O e-mail é obrigatório.";
+            erroEmail.classList.add("mostrar");
+
+            valido = false;
+
+        } else if (!email.value.includes("@")) {
+
+            erroEmail.textContent = "Digite um e-mail válido.";
+            erroEmail.classList.add("mostrar");
+
+            valido = false;
+        }
+
+        if (password.value.trim() === "") {
+
+            erroPassword.textContent = "A palavra-passe é obrigatória.";
+            erroPassword.classList.add("mostrar");
+
+            valido = false;
+        }
+
+        if (valido) {
+
+            mensagemLogin.textContent = "Login validado com sucesso!";
+            mensagemLogin.style.color = "green";
+            mensagemLogin.style.marginTop = "15px";
+        }
+
+    });
+
+    btnApagar.addEventListener("click", function () {
+
+        email.value = "";
+        password.value = "";
+
+        erroEmail.textContent = "";
+        erroPassword.textContent = "";
+        mensagemLogin.textContent = "";
+
+        erroEmail.classList.remove("mostrar");
+        erroPassword.classList.remove("mostrar");
+
+    });
+
+});
