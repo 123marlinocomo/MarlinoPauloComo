@@ -126,15 +126,12 @@
 
         <div class="hero-slides owl-carousel">
 
-
-            <!-- Single Hero Slide -->
             <div class="single-hero-slide d-flex align-items-center justify-content-center">
 
                 <div
                     class="slide-img bg-img"
                     style="background-image: url(bg-1.jpg);">
                 </div>
-
 
                 <div class="container">
 
@@ -148,7 +145,6 @@
                                     data-animation="fadeInUp"
                                     data-delay="100ms">
                                 </h6>
-
 
                                 <h2
                                     data-animation="fadeInUp"
@@ -173,14 +169,12 @@
             </div>
 
 
-            <!-- Single Hero Slide -->
             <div class="single-hero-slide d-flex align-items-center justify-content-center">
 
                 <div
                     class="slide-img bg-img"
                     style="background-image: url(bg-2.jpg);">
                 </div>
-
 
                 <div class="container">
 
@@ -197,7 +191,6 @@
                                     Últimos Álbuns
 
                                 </h6>
-
 
                                 <h2
                                     data-animation="fadeInUp"
@@ -281,8 +274,6 @@
 
                     <div class="albums-slideshow owl-carousel">
 
-
-                        <!-- Single Album -->
                         <div class="single-album">
 
                             <img src="a1.jpg" alt="">
@@ -302,7 +293,6 @@
                         </div>
 
 
-                        <!-- Single Album -->
                         <div class="single-album">
 
                             <img src="a2.jpg" alt="">
@@ -322,7 +312,6 @@
                         </div>
 
 
-                        <!-- Single Album -->
                         <div class="single-album">
 
                             <img src="a3.jpg" alt="">
@@ -342,7 +331,6 @@
                         </div>
 
 
-                        <!-- Single Album -->
                         <div class="single-album">
 
                             <img src="a4.jpg" alt="">
@@ -362,7 +350,6 @@
                         </div>
 
 
-                        <!-- Single Album -->
                         <div class="single-album">
 
                             <img src="a5.jpg" alt="">
@@ -382,7 +369,6 @@
                         </div>
 
 
-                        <!-- Single Album -->
                         <div class="single-album">
 
                             <img src="a6.jpg" alt="">
@@ -687,7 +673,6 @@
                         </div>
 
 
-                        <!-- Single Artist -->
                         <div
                             class="single-artists d-flex align-items-center wow fadeInUp"
                             data-wow-delay="100ms">
@@ -709,7 +694,6 @@
                         </div>
 
 
-                        <!-- Single Artist -->
                         <div
                             class="single-artists d-flex align-items-center wow fadeInUp"
                             data-wow-delay="150ms">
@@ -731,7 +715,6 @@
                         </div>
 
 
-                        <!-- Single Artist -->
                         <div
                             class="single-artists d-flex align-items-center wow fadeInUp"
                             data-wow-delay="200ms">
@@ -753,7 +736,6 @@
                         </div>
 
 
-                        <!-- Single Artist -->
                         <div
                             class="single-artists d-flex align-items-center wow fadeInUp"
                             data-wow-delay="300ms">
@@ -1069,15 +1051,11 @@
             let assunto = document.getElementById("subject").value.trim();
             let mensagem = document.getElementById("message").value.trim();
 
-
             let erroNome = document.getElementById("erroNome");
             let erroEmail = document.getElementById("erroEmail");
             let erroAssunto = document.getElementById("erroAssunto");
             let erroMensagem = document.getElementById("erroMensagem");
             let mensagemSucesso = document.getElementById("mensagemSucesso");
-
-
-            // Limpar mensagens anteriores
 
             erroNome.textContent = "";
             erroEmail.textContent = "";
@@ -1085,55 +1063,60 @@
             erroMensagem.textContent = "";
             mensagemSucesso.textContent = "";
 
+            erroNome.classList.remove("mostrar");
+            erroEmail.classList.remove("mostrar");
+            erroAssunto.classList.remove("mostrar");
+            erroMensagem.classList.remove("mostrar");
 
             let valido = true;
 
 
-            // Verificar Nome
-
             if (nome === "") {
 
                 erroNome.textContent = "O nome é obrigatório.";
+                erroNome.classList.add("mostrar");
 
                 valido = false;
 
             }
 
-
-            // Verificar E-mail
 
             if (email === "") {
 
                 erroEmail.textContent = "O e-mail é obrigatório.";
+                erroEmail.classList.add("mostrar");
+
+                valido = false;
+
+            } else if (!email.includes("@")) {
+
+                erroEmail.textContent = "Digite um e-mail válido.";
+                erroEmail.classList.add("mostrar");
 
                 valido = false;
 
             }
 
-
-            // Verificar Assunto
 
             if (assunto === "") {
 
                 erroAssunto.textContent = "O assunto é obrigatório.";
+                erroAssunto.classList.add("mostrar");
 
                 valido = false;
 
             }
 
-
-            // Verificar Mensagem
 
             if (mensagem === "") {
 
                 erroMensagem.textContent = "A mensagem é obrigatória.";
+                erroMensagem.classList.add("mostrar");
 
                 valido = false;
 
             }
 
-
-            // Formulário preenchido corretamente
 
             if (valido) {
 
@@ -1145,8 +1128,6 @@
         });
 
 
-        // Botão Apagar
-
         document.getElementById("btnApagar").addEventListener("click", function () {
 
             document.getElementById("name").value = "";
@@ -1154,12 +1135,16 @@
             document.getElementById("subject").value = "";
             document.getElementById("message").value = "";
 
-
             document.getElementById("erroNome").textContent = "";
             document.getElementById("erroEmail").textContent = "";
             document.getElementById("erroAssunto").textContent = "";
             document.getElementById("erroMensagem").textContent = "";
             document.getElementById("mensagemSucesso").textContent = "";
+
+            document.getElementById("erroNome").classList.remove("mostrar");
+            document.getElementById("erroEmail").classList.remove("mostrar");
+            document.getElementById("erroAssunto").classList.remove("mostrar");
+            document.getElementById("erroMensagem").classList.remove("mostrar");
 
         });
 
